@@ -2787,6 +2787,15 @@ public final class Settings {
         public static final String NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
 
         /**
+         * Determine if Peek is disabled or enabled
+         * 定义Peek状态为禁用或启用
+         * 0 = disabled (default) / 禁用 (默认)
+         * 1 = enabled / 启用
+         * @hide
+         */
+        public static final String PEEK_STATE = "peek_state";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
