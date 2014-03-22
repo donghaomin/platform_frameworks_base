@@ -2450,6 +2450,20 @@ public final class Settings {
         public static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
 
         /**
+         * Add a button on recent panel to clear all recent apps
+         * and an option to alter its position(or switch off)
+         * 在"最近打开的应用"面板中添加一个清除全部最近应用的按钮
+         * 以及一个选项来调整它的位置(或禁用它).
+         * 0 = off / 关闭
+         * 1 = top left / 左上角
+         * 2 = top right / 右上角
+         * 3 = bottom left / 左下角
+         * 4 = bottom right / 右下角
+         * @hide
+         */
+        public static final String CLEAR_ALL_RECENTS_BUTTON = "clear_all_recents_button";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
