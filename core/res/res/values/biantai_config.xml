@@ -38,25 +38,10 @@
            $$$$$$                    $$$
                                    $$$$
 -->
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-  <!-- Power menu -->
-  <!-- 电源菜单 -->
-  <java-symbol type="array" name="shutdown_reboot_options" />
-  <java-symbol type="array" name="shutdown_reboot_actions" />
-  <java-symbol type="array" name="shutdown_reboot_icons" />
-  <java-symbol type="drawable" name="ic_lock_reboot" />
-  <java-symbol type="drawable" name="ic_lock_reboot_recovery" />
-  <java-symbol type="drawable" name="ic_lock_reboot_bootloader" />
-  <java-symbol type="drawable" name="ic_lock_screenshot" />
-  <java-symbol type="string" name="global_actions" />
-  <java-symbol type="string" name="global_action_reboot" />
-  <java-symbol type="string" name="global_action_screenshot" />
-  <java-symbol type="string" name="reboot_confirm" />
-  <java-symbol type="string" name="reboot_progress" />
-
-  <!-- Camera flash -->
-  <!-- 闪光灯 -->
-  <java-symbol type="bool" name="config_device_has_camera_flash" />
+    <!-- Camera flash -->
+    <!-- 闪光灯 -->
+    <bool name="config_device_has_camera_flash">false</bool>
 
 </resources>

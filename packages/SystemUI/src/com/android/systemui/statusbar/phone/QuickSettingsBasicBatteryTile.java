@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 The Android Open Source Project
+ * Copyright (C) 2014 ParanoidAndroid Project
  * This code has been modified. Portions copyright (C) 2014 ParanoidAndroid Project.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,6 @@
 package com.android.systemui.statusbar.phone;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -27,22 +26,24 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.systemui.BatteryMeterView;
+import com.android.systemui.BatteryCircleMeterView;
 import com.android.systemui.R;
 
-class QuickSettingsBasicTile extends QuickSettingsTileView {
-
-    public TextView mTextView;
-    public ImageView mImageView;
-
-    public QuickSettingsBasicTile(Context context) {
+class QuickSettingsBasicBatteryTile extends QuickSettingsTileView {
+    private final TextView mTextView;
+    private BatteryMeterView mBattery;
+    private BatteryCircleMeterView mCircleBattery;
+    
+    public QuickSettingsBasicBatteryTile(Context context) {
         this(context, null);
     }
 
-    public QuickSettingsBasicTile(Context context, AttributeSet attrs) {
-        this(context, attrs, R.layout.quick_settings_tile_basic);
+    public QuickSettingsBasicBatteryTile(Context context, AttributeSet attrs) {
+        this(context, attrs, R.layout.quick_settings_tile_battery);
     }
 
-    public QuickSettingsBasicTile(Context context, AttributeSet attrs, int layoutId) {
+    public QuickSettingsBasicBatteryTile(Context context, AttributeSet attrs, int layoutId) {
         super(context, attrs);
 
         setLayoutParams(new FrameLayout.LayoutParams(
@@ -55,7 +56,9 @@ class QuickSettingsBasicTile extends QuickSettingsTileView {
                         FrameLayout.LayoutParams.MATCH_PARENT,
                         FrameLayout.LayoutParams.MATCH_PARENT));
         mTextView = (TextView) findViewById(R.id.text);
-        mImageView = (ImageView) findViewById(R.id.image);
+        mBattery = (BatteryMeterView) findViewById(R.id.image);
+        mBattery.setVisibility(View.GONE);
+        mCircleBattery = (BatteryCircleMeterView) findViewById(R.id.circle_battery);
     }
 
     @Override
@@ -63,20 +66,16 @@ class QuickSettingsBasicTile extends QuickSettingsTileView {
         throw new RuntimeException("why?");
     }
 
-    public ImageView getImageView() {
-        return mImageView;
+    public BatteryMeterView getBattery() {
+        return mBattery;
+    }
+
+    public BatteryCircleMeterView getCircleBattery() {
+        return mCircleBattery;
     }
 
     public TextView getTextView() {
         return mTextView;
-    }
-
-    public void setImageDrawable(Drawable drawable) {
-        mImageView.setImageDrawable(drawable);
-    }
-
-    public void setImageResource(int resId) {
-        mImageView.setImageResource(resId);
     }
 
     public void setText(CharSequence text) {
@@ -87,11 +86,11 @@ class QuickSettingsBasicTile extends QuickSettingsTileView {
         mTextView.setText(resId);
     }
 
-    @Override
-    public void setEditMode(boolean enabled) {
-        // No hover on edit mode
-        setBackgroundResource(enabled ? R.drawable.qs_tile_background_no_hover :
-                R.drawable.qs_tile_background);
-        super.setEditMode(enabled);
+    public void updateBatterySettings() {
+        if (mBattery == null) {
+            return;
+        }
+        mCircleBattery.updateSettings();
+        mBattery.updateSettings();
     }
 }
