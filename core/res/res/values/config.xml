@@ -1252,6 +1252,11 @@
     <string-array name="config_disabledUntilUsedPreinstalledImes" translatable="false">
         <item>com.android.inputmethod.latin</item>
     </string-array>
+    
+
+    <!-- The timeout you have to longpress the back button for to kill the foreground app. -->
+    <!-- 杀掉前台应用时需长按返回键达到此延时时长. -->
+    <integer name="config_backKillTimeout">2000</integer>
 
     <string-array name="config_notificationScorers">
         <item>com.android.internal.notification.DemoContactNotificationScorer</item>
