@@ -2796,6 +2796,16 @@ public final class Settings {
         public static final String PEEK_STATE = "peek_state";
 
         /**
+         * Defines the screen-off animation to display
+         * 定义显示的关屏动画
+         * 0 = fade out / 淡出
+         * 1 = electron beam[CRT screen-off] (default) / 电子光束[CRT显示器关屏] (默认)
+         * 2 = scale down / 收缩
+         * @hide
+         */
+        public static final String SCREEN_OFF_ANIMATION = "screen_off_animation";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
